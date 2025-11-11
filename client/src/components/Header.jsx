@@ -58,12 +58,12 @@ export default function Header() {
 
   const NavLinks = () => (
     <div className="flex flex-col md:flex-row space-y-2 md:space-y-0 md:space-x-8">
-      <Link to="/" className="px-4 py-2 rounded transition-all duration-200 text-gray-700 hover:text-blue-600 hover:bg-white/40">Home</Link>
-      {isLoggedIn && (
-        <Link to="/interview/setup" className="px-4 py-2 rounded transition-all duration-200 text-gray-700 hover:text-blue-600 hover:bg-white/40">Practice</Link>
-      )}
-      {isLoggedIn && (
-        <Link to="/dashboard" className="px-4 py-2 rounded transition-all duration-200 text-gray-700 hover:text-blue-600 hover:bg-white/40">Dashboard</Link>
+      <Link to="/" className="px-4 py-2 rounded transition-all duration-200 text-gray-700 hover:text-indigo-600 hover:bg-white/40">Home</Link>
+        {isLoggedIn && (
+        <Link to="/interview/setup" className="px-4 py-2 rounded transition-all duration-200 text-gray-700 hover:text-indigo-600 hover:bg-white/40">Practice</Link>
+        )}
+        {isLoggedIn && (
+        <Link to="/dashboard" className="px-4 py-2 rounded transition-all duration-200 text-gray-700 hover:text-indigo-600 hover:bg-white/40">Dashboard</Link>
       )}
     </div>
   )
@@ -109,16 +109,17 @@ export default function Header() {
               <div className="hidden md:flex items-center space-x-4">
                 {!isLoggedIn ? (
                   <>
-                    <Link to="/login" className="px-4 py-2 rounded transition-all duration-200 text-gray-700 hover:text-blue-600 hover:bg-white/40">Log in</Link>
-                    <Link to="/signup" className="px-4 py-2 bg-blue-600 hover:bg-blue-700 text-white rounded-md font-medium transition-colors">Sign up</Link>
+                    <Link to="/login" className="px-4 py-2 rounded transition-all duration-200 hover:bg-white/40" style={{ color: '#1E1E1E' }} onMouseEnter={(e) => e.target.style.color = '#2F5DFF'} onMouseLeave={(e) => e.target.style.color = '#1E1E1E'}>Log in</Link>
+                    <Link to="/signup" className="px-4 py-2 text-white rounded-md font-medium transition-all shadow-md hover:shadow-lg transform hover:-translate-y-0.5" style={{ background: '#2F5DFF', boxShadow: '0 2px 8px rgba(47,93,255,0.3)' }}>Sign up</Link>
                   </>
                 ) : (
                   <div className="relative" ref={dropdownRef}>
                     <button
                       onClick={toggleDropdown}
-                      className="flex items-center space-x-2 p-2 rounded-lg hover:bg-gray-100 transition-colors duration-300 focus:outline-none focus:ring-2 focus:ring-blue-500"
-                    >
-                      <div className="w-8 h-8 rounded-full bg-blue-600 flex items-center justify-center overflow-hidden">
+                      className="flex items-center space-x-2 p-2 rounded-lg hover:bg-gray-100 transition-colors duration-300 focus:outline-none"
+                      style={{ '--tw-ring-color': '#2F5DFF' }}
+                      >
+                      <div className="w-8 h-8 rounded-full flex items-center justify-center overflow-hidden" style={{ background: '#2F5DFF' }}>
                         {user?.avatar ? (
                           <img src={user.avatar || "/placeholder.svg"} alt={user.name} className="w-full h-full object-cover" />
                         ) : (
@@ -158,13 +159,13 @@ export default function Header() {
               <NavLinks />
               {!isLoggedIn ? (
                 <div className="space-y-2 pt-2">
-                  <Link to="/login" className="block px-4 py-2 rounded transition-all duration-200 text-gray-700 hover:text-blue-600 hover:bg-white/40">Log in</Link>
-                  <Link to="/signup" className="block px-4 py-2 bg-blue-600 hover:bg-blue-700 text-white rounded-md">Sign up</Link>
+                  <Link to="/login" className="block px-4 py-2 rounded transition-all duration-200 text-gray-700 hover:text-indigo-600 hover:bg-white/40">Log in</Link>
+                  <Link to="/signup" className="block px-4 py-2 bg-gradient-to-r from-indigo-600 to-purple-600 hover:from-indigo-700 hover:to-purple-700 text-white rounded-md">Sign up</Link>
                 </div>
               ) : (
                 <div className="space-y-2 pt-2">
-                  <Link to="/profile" className="block px-4 py-2 rounded transition-all duration-200 text-gray-700 hover:text-blue-600 hover:bg-white/40">Profile</Link>
-                  <button onClick={handleLogout} className="w-full text-left px-4 py-2 rounded transition-colors duration-300 text-gray-700 hover:text-blue-600 hover:bg-white/40">Logout</button>
+                  <Link to="/profile" className="block px-4 py-2 rounded transition-all duration-200 text-gray-700 hover:text-indigo-600 hover:bg-white/40">Profile</Link>
+                  <button onClick={handleLogout} className="w-full text-left px-4 py-2 rounded transition-colors duration-300 text-gray-700 hover:text-indigo-600 hover:bg-white/40">Logout</button>
                 </div>
               )}
             </div>
@@ -186,7 +187,7 @@ export default function Header() {
               </button>
               <button
                 onClick={confirmLogout}
-                className="px-4 py-2 rounded-md bg-blue-600 hover:bg-blue-700 text-white transition-colors"
+                className="px-4 py-2 rounded-md bg-gradient-to-r from-indigo-600 to-purple-600 hover:from-indigo-700 hover:to-purple-700 text-white transition-colors"
               >
                 Logout
               </button>

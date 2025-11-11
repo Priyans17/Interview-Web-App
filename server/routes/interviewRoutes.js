@@ -438,4 +438,41 @@ router.post("/:interviewId/answer", authMiddleware, async (req, res) => {
   }
 });
 
+/**
+ * DELETE /:interviewId
+ * Delete an interview and its associated report (authenticated)
+ */
+router.delete("/:interviewId", authMiddleware, async (req, res) => {
+  try {
+    const interviewId = req.params.interviewId;
+    const user = req.user;
+
+    // Validate MongoDB ObjectId format
+    if (!/^[0-9a-fA-F]{24}$/.test(interviewId)) {
+      return res.status(400).json({ error: "Invalid interview ID format" });
+    }
+
+    const interview = await Interview.findById(interviewId);
+    if (!interview) {
+      return res.status(404).json({ error: "Interview not found" });
+    }
+
+    // Check if user owns this interview
+    if (interview.user_id.toString() !== user._id.toString()) {
+      return res.status(403).json({ error: "Unauthorized to delete this interview" });
+    }
+
+    // Delete associated report if exists
+    await Report.deleteOne({ interviewId });
+
+    // Delete the interview
+    await Interview.findByIdAndDelete(interviewId);
+
+    return res.json({ message: "Interview deleted successfully" });
+  } catch (error) {
+    console.error("Error deleting interview:", error);
+    return res.status(500).json({ error: "Failed to delete interview" });
+  }
+});
+
 export default router;

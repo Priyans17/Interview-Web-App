@@ -171,7 +171,7 @@ export default function SignUp() {
 	};
 
 	return (
-		<div className="min-h-screen bg-gradient-to-br from-slate-50 via-blue-50 to-indigo-50 min-w-screen">
+		<div className="min-h-screen min-w-screen" style={{ background: '#F5F6FA' }}>
 			{toast.show && (
 				<Toast
 					message={toast.message}
@@ -323,7 +323,8 @@ export default function SignUp() {
 							<button
 								type="submit"
 								disabled={loading}
-								className="w-full bg-gradient-to-r from-blue-600 to-indigo-600 hover:from-blue-700 hover:to-indigo-700 text-white py-3 px-4 rounded-lg font-semibold transition-all focus:outline-none focus:ring-2 focus:ring-blue-500 focus:ring-offset-2 shadow-md hover:shadow-lg disabled:opacity-50 disabled:cursor-not-allowed"
+								className="w-full text-white py-3 px-4 rounded-lg font-semibold transition-all focus:outline-none shadow-lg hover:shadow-xl transform hover:-translate-y-1 disabled:opacity-50 disabled:cursor-not-allowed disabled:transform-none"
+								style={{ background: '#2F5DFF', boxShadow: '0 4px 15px rgba(47,93,255,0.4)' }}
 							>
 								{loading ? "Creating account..." : "Sign up"}
 							</button>

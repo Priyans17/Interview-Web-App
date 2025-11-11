@@ -116,7 +116,7 @@ export default function VerifyOTP() {
 	};
 
 	return (
-		<div className="min-h-screen bg-gradient-to-br from-slate-50 via-blue-50 to-indigo-50 min-w-screen">
+		<div className="min-h-screen min-w-screen" style={{ background: '#F5F6FA' }}>
 			{toast.show && (
 				<Toast
 					message={toast.message}

@@ -77,7 +77,7 @@ export default function InterviewReport() {
 
 	if (loading) {
 		return (
-			<div className="min-h-screen bg-gradient-to-br from-slate-50 to-blue-50 flex items-center justify-center">
+			<div className="min-h-screen flex items-center justify-center" style={{ background: '#F5F6FA' }}>
 				<div className="text-center">
 					<div className="animate-spin rounded-full h-12 w-12 border-b-2 border-blue-600 mx-auto mb-4"></div>
 					<p className="text-slate-600">Generating your report...</p>
@@ -89,14 +89,15 @@ export default function InterviewReport() {
 
 	if (error) {
 		return (
-			<div className="min-h-screen bg-gradient-to-br from-slate-50 to-blue-50 flex items-center justify-center">
+			<div className="min-h-screen flex items-center justify-center" style={{ background: '#F5F6FA' }}>
 				<div className="text-center max-w-md">
 					<div className="text-red-600 text-4xl mb-4">!</div>
 					<h2 className="text-2xl font-bold text-slate-800 mb-2">Report Generation Error</h2>
 					<p className="text-slate-600 mb-6">{error}</p>
 					<button
 						onClick={() => window.location.reload()}
-						className="px-6 py-3 bg-blue-600 hover:bg-blue-700 text-white rounded-lg font-semibold transition-colors shadow-md hover:shadow-lg"
+						className="px-6 py-3 text-white rounded-lg font-semibold transition-all shadow-lg hover:shadow-xl transform hover:-translate-y-1"
+						style={{ background: '#2F5DFF', boxShadow: '0 4px 15px rgba(47,93,255,0.4)' }}
 					>
 						Refresh Page
 					</button>
@@ -107,12 +108,13 @@ export default function InterviewReport() {
 
 	if (!report) {
 		return (
-			<div className="min-h-screen bg-gradient-to-br from-slate-50 to-blue-50 flex items-center justify-center">
+			<div className="min-h-screen flex items-center justify-center" style={{ background: '#F5F6FA' }}>
 				<div className="text-center">
 					<p className="text-slate-600 mb-4">No report found for this interview.</p>
 					<button
 						onClick={() => navigate("/dashboard")}
-						className="px-6 py-3 bg-blue-600 hover:bg-blue-700 text-white rounded-lg font-semibold transition-colors shadow-md hover:shadow-lg"
+						className="px-6 py-3 text-white rounded-lg font-semibold transition-all shadow-lg hover:shadow-xl transform hover:-translate-y-1"
+						style={{ background: '#2F5DFF', boxShadow: '0 4px 15px rgba(47,93,255,0.4)' }}
 					>
 						Back to Dashboard
 					</button>
@@ -122,7 +124,7 @@ export default function InterviewReport() {
 	}
 
 	return (
-		<div className="min-h-screen bg-gradient-to-br from-slate-50 to-blue-50">
+		<div className="min-h-screen" style={{ background: '#F5F6FA' }}>
 			<main className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 py-8">
 				<div className="mb-8">
 					<h1 className="text-3xl font-bold text-slate-800 mb-2">
@@ -199,13 +201,15 @@ export default function InterviewReport() {
 					</button>
 					<button
 						onClick={() => navigate("/dashboard")}
-						className="px-8 py-3 bg-slate-600 hover:bg-slate-700 text-white rounded-lg font-semibold transition-colors shadow-md hover:shadow-lg"
+						className="px-8 py-3 text-white rounded-lg font-semibold transition-all shadow-lg hover:shadow-xl transform hover:-translate-y-1"
+						style={{ background: '#1E1E1E', boxShadow: '0 4px 15px rgba(0,0,0,0.2)' }}
 					>
 						Back to Dashboard
 					</button>
 					<button
 						onClick={() => navigate("/interview/setup")}
-						className="px-8 py-3 bg-gradient-to-r from-green-600 to-emerald-600 hover:from-green-700 hover:to-emerald-700 text-white rounded-lg font-semibold transition-colors shadow-md hover:shadow-lg"
+						className="px-8 py-3 text-white rounded-lg font-semibold transition-all shadow-lg hover:shadow-xl transform hover:-translate-y-1"
+						style={{ background: '#1ABC9C', boxShadow: '0 4px 15px rgba(26,188,156,0.4)' }}
 					>
 						Start New Interview
 					</button>

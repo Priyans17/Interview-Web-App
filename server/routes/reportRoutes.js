@@ -42,4 +42,38 @@ router.get("/", authMiddleware, async(req, res) => {
   res.json(reports);
 });
 
+/**
+ * DELETE /:interviewId
+ * Delete a report (authenticated)
+ */
+router.delete("/:interviewId", authMiddleware, async (req, res) => {
+  try {
+    const interviewId = req.params.interviewId;
+    const user = req.user;
+
+    // Validate MongoDB ObjectId format
+    if (!/^[0-9a-fA-F]{24}$/.test(interviewId)) {
+      return res.status(400).json({ error: "Invalid interview ID format" });
+    }
+
+    const report = await Report.findOne({ interviewId });
+    if (!report) {
+      return res.status(404).json({ error: "Report not found" });
+    }
+
+    // Check if user owns this report
+    if (report.userId.toString() !== user._id.toString()) {
+      return res.status(403).json({ error: "Unauthorized to delete this report" });
+    }
+
+    // Delete the report
+    await Report.deleteOne({ interviewId });
+
+    return res.json({ message: "Report deleted successfully" });
+  } catch (error) {
+    console.error("Error deleting report:", error);
+    return res.status(500).json({ error: "Failed to delete report" });
+  }
+});
+
 export default router;

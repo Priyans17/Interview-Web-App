@@ -74,9 +74,9 @@ export default function Profile() {
 
 	if (loading) {
 		return (
-			<div className="min-h-screen bg-gradient-to-br from-slate-50 to-blue-50 flex items-center justify-center">
+			<div className="min-h-screen flex items-center justify-center" style={{ background: '#F5F6FA' }}>
 				<div className="text-center">
-					<div className="animate-spin rounded-full h-12 w-12 border-b-2 border-blue-600 mx-auto mb-4"></div>
+					<div className="animate-spin rounded-full h-12 w-12 border-b-2 mx-auto mb-4" style={{ borderColor: '#2F5DFF', borderTopColor: 'transparent' }}></div>
 					<p className="text-slate-600">Loading profile...</p>
 				</div>
 			</div>
@@ -96,7 +96,7 @@ export default function Profile() {
 	const displayUser = user || {};
 
 	return (
-		<div className="min-h-screen bg-gradient-to-br from-slate-50 to-blue-50">
+		<div className="min-h-screen" style={{ background: '#F5F6FA' }}>
 			<main className="max-w-4xl mx-auto px-4 sm:px-6 lg:px-8 py-8">
 				<div className="mb-8">
 					<h1 className="text-4xl font-bold text-slate-800 mb-2">Profile</h1>
